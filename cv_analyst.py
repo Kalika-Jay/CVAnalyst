@@ -75,7 +75,7 @@ def find_missing_keywords(resume_text, jd_text, top_n=20):
         return []
 import streamlit as st
 
-st.set_page_config(page_title="Smart Resume Assistant", page_icon="📄", layout="wide")
+st.set_page_config(page_title="CVAnalyst", page_icon="📄", layout="wide")
 
 st.title("📄 CVAnalyst")
 st.markdown("Upload your resume and job description to get similarity analysis and optimization suggestions!")
