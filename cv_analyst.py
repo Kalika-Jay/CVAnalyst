@@ -90,7 +90,7 @@ with col1:
 with col2:
     st.subheader("📋 Job Description")
     jd_input = st.text_area("Paste the job description here", height=200, key="jd")
-
+analyze_button = st.button("🔍 Analyze Resume", type="primary", use_container_width=True)
 if resume_file and jd_input:
     with st.spinner("Analyzing your resume..."):
         # Extract and process text
