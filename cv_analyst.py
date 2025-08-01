@@ -107,7 +107,7 @@ with col1:
     resume_file = st.file_uploader("Choose a PDF file", type="pdf", key="resume")
 
 with col2:
-    st.subheader("📋 Job Description")
+    st.subheader("📋 Job Description / Requirements")
     jd_input = st.text_area("Paste the job description here", height=200, key="jd")
     st.button("🔍 Analyze Resume", type="primary", use_container_width=True)
 
@@ -145,7 +145,7 @@ if resume_file and jd_input:
                 st.metric("Similarity Score", f"{similarity:.1%}")
 
             with col3:
-                st.metric("Missing Keywords", len(missing_keywords))
+                st.metric("Missing Keywords", f"{len(missing_keywords)}+")
 
             # Missing keywords section
             if missing_keywords:
