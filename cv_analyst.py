@@ -80,6 +80,25 @@ st.set_page_config(page_title="CVAnalyst", page_icon="📄", layout="wide")
 st.title("📄 CVAnalyst")
 st.markdown("Upload your resume and job description to get similarity analysis and optimization suggestions!")
 
+st.markdown("""
+    <style>
+    .red-button > button {
+        background-color: #e74c3c;
+        color: white;
+    }
+
+    .green-button > button {
+        background-color: #2ecc71;
+        color: white;
+    }
+
+    .blue-button > button {
+        background-color: #3498db;
+        color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Create two columns for better layout
 col1, col2 = st.columns([1, 1])
 
@@ -90,7 +109,8 @@ with col1:
 with col2:
     st.subheader("📋 Job Description")
     jd_input = st.text_area("Paste the job description here", height=200, key="jd")
-analyze_button = st.button("🔍 Analyze Resume", type="primary", use_container_width=True)
+    st.button("🔍 Analyze Resume", type="primary", use_container_width=True)
+
 if resume_file and jd_input:
     with st.spinner("Analyzing your resume..."):
         # Extract and process text
