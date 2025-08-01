@@ -145,7 +145,7 @@ if resume_file and jd_input:
                 st.metric("Similarity Score", f"{similarity:.1%}")
 
             with col3:
-                st.metric("Missing Keywords", len(missing_keywords))
+                st.metric("Missing Keywords", f"{len(missing_keywords)}+")
 
             # Missing keywords section
             if missing_keywords:
