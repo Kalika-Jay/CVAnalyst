@@ -43,23 +43,22 @@ def get_similarity(resume_text, jd_text):
 
 
 def find_missing_keywords(resume_text, jd_text, top_n=20):
-    """Find important missing keywords using TF-IDF"""
     if not resume_text or not jd_text:
         return []
 
     try:
-        # Get important terms from job description
+        # Getting important terms from job description
         vectorizer = TfidfVectorizer(stop_words='english', max_features=500, ngram_range=(1, 2))
         jd_tfidf = vectorizer.fit_transform([jd_text])
 
         feature_names = vectorizer.get_feature_names_out()
         tfidf_scores = jd_tfidf.toarray()[0]
 
-        # Get top keywords by TF-IDF score
+        # Getting top keywords by TF-IDF score
         keyword_scores = list(zip(feature_names, tfidf_scores))
         keyword_scores.sort(key=lambda x: x[1], reverse=True)
 
-        # Check which keywords are missing from resume
+        # Checking which keywords are missing from resume
         resume_lower = resume_text.lower()
         missing_keywords = []
 
@@ -73,6 +72,7 @@ def find_missing_keywords(resume_text, jd_text, top_n=20):
     except Exception as e:
         st.error(f"Error finding missing keywords: {str(e)}")
         return []
+
 import streamlit as st
 
 st.set_page_config(page_title="CVAnalyst", page_icon="📄", layout="wide")
@@ -99,7 +99,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Create two columns for better layout
+# Creating two columns for better layout
 col1, col2 = st.columns([1, 1])
 
 with col1:
@@ -113,20 +113,20 @@ with col2:
 
 if resume_file and jd_input:
     with st.spinner("Analyzing your resume..."):
-        # Extract and process text
+        # Extracting and processing text
         resume_text = extract_text_from_pdf(resume_file)
 
         if resume_text:
             resume_clean = clean_text(resume_text)
             jd_clean = clean_text(jd_input)
 
-            # Calculate similarity
+            # Calculating similarity
             similarity = get_similarity(resume_clean, jd_clean)
 
-            # Find missing keywords
+            # Finding missing keywords
             missing_keywords = find_missing_keywords(resume_clean, jd_clean)
 
-            # Display results
+            # Displaying results
             st.markdown("---")
             st.subheader("📊 Analysis Results")
 
@@ -181,7 +181,6 @@ if resume_file and jd_input:
             for rec in recommendations:
                 st.write(f"• {rec}")
 
-            # Display extracted resume text (optional)
             with st.expander("📄 View extracted resume text"):
                 st.text_area("Resume content:", resume_text, height=200, disabled=True)
 
