@@ -77,7 +77,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Smart Resume Assistant", page_icon="📄", layout="wide")
 
-st.title("📄 Smart Resume Assistant")
+st.title("📄 CVAnalyst")
 st.markdown("Upload your resume and job description to get similarity analysis and optimization suggestions!")
 
 # Create two columns for better layout
